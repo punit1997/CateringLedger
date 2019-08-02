@@ -12,6 +12,6 @@ class cater extends Model
     ];
 
     public function cater_vote(){
-        return $this->hasmany('App\cater_votings','cater_id','id');
+        return $this->hasmany('App\cater_votings','caterId','id');
     }
 }
