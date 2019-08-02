@@ -29,7 +29,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-    Route::patch('/vote','HomeController@vote')->middleware('auth', 'throttle:1,1');
+
+Route::patch('/menuvote','HomeController@vote')->middleware('auth', 'throttle:1,1');
 
 
 route::get('/vote',function(){
@@ -41,16 +42,23 @@ route::get('/vote',function(){
     cater_voting::where('cater_id', $cater_id)->where('companyId', $company_id)->update(['vote'=>$vote]);
     return "good";
 
+// to show cater
+route::get('/cater',function(){
+
+    $cater = cater::select('id','name','rating')->get();
+    return view('voteCater', compact('cater'));
 });
 
-// to create cater
-route::post('/create', function(Request $request){
+//to vote for cater
+route::get('/vote/{id}',function($id){
+    $user = auth()->user();
+    $company_id = User::select('companyId')->where('id', $user)->get();
+    $cater_id = $id;
+    $vote = cater_voting::where('caterId', $cater_id)->where('companyId', $company_id)->first();
+    $vote->vote = $vote->vote +1;
+    cater_voting::where('caterId', $cater_id)->where('companyId', $company_id)->update(['vote'=>$vote->vote]);
 
-    $cater = new cater();
-    $cater->name = request('name');
-    $cater->rating = request('rating');
-    $cater->count = request('count');
+    return redirect('/cater');
 
-    $cater->save();
-    return "good";
 });
+
