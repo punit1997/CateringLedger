@@ -9,9 +9,9 @@ $factory->define(Company::class, function (Faker $faker) {
     static $num=1;
     return [
         'Name' => $faker->company,
-        'catererId' =>$num++,
-        'breakfastId' =>$num++,
-        'lunchId'=>$num++,
+        'caterId' =>$num,
+        'breakfastId' =>$num,
+        'lunchId'=>$num,
         'dinnerId'=>$num++
     ];
 });

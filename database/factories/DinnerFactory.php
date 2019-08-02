@@ -1,11 +1,11 @@
-<?php
+ <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Lunch;
+use App\Dinner;
 use Faker\Generator as Faker;
 
-$factory->define(Lunch::class, function (Faker $faker) {
+$factory->define(Dinner::class, function (Faker $faker) {
     static $num=1;
     return [
         'description' => $faker->sentence(),

@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Console;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Company;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,9 +25,48 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+
+          $schedule->call(function () {
+             $companies = Company::all();
+            foreach ($companies as $company) {
+             $vote = DB::table('lunches')->where(['companyId'=>$company->id, 'caterId'=>$company->caterId])->max('voting');
+             $id = DB::table('lunches')->where(['companyId'=>$company->id, 'caterId'=>$company->caterId, 'voting'=>$vote])->first()->id;
+             $company->update(['lunchId'=>$id]);
+            }
+          })->dailyAt('23:00');
+
+          $schedule->call(function () {
+             $companies = Company::all();
+            foreach ($companies as $company) {
+             $vote = DB::table('breakfasts')->where(['companyId'=>$company->id, 'caterId'=>$company->caterId])->max('voting');
+             $id = DB::table('breakfasts')->where(['companyId'=>$company->id, 'caterId'=>$company->caterId, 'voting'=>$vote])->first()->id;
+             $company->update(['breakfastId'=>$id]);
+            }
+      })->dailyAt('23:00');
+
+          $schedule->call(function () {
+             $companies = Company::all();
+            foreach ($companies as $company) {
+             $vote = DB::table('dinners')->where(['companyId'=>$company->id, 'caterId'=>$company->caterId])->max('voting');
+             $id = DB::table('dinners')->where(['companyId'=>$company->id, 'caterId'=>$company->caterId, 'voting'=>$vote])->first()->id;
+             $company->update(['dinnerId'=>$id]);
+            }
+        })->dailyAt('23:00');
+
+
+
           $schedule->call(function () {
           DB::table('lunches')->update(array('voting' => 0));
         })->dailyAt('23:30');
+
+          $schedule->call(function () {
+          DB::table('breakfasts')->update(array('voting' => 0));
+          })->dailyAt('23:30');
+
+          $schedule->call(function () {
+          DB::table('dinners')->update(array('voting' => 0));
+        })->dailyAt('23:30');
+
 
     }
 
