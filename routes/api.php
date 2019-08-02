@@ -39,11 +39,11 @@ route::get('/cater',function(){
 //to vote for cater
 route::put('/vote',function(){
     $user = auth()->user();
-    $company_id = User::select('company_id')->where('id', $user)->get();
+    $company_id = User::select('companyId')->where('id', $user)->get();
     $cater_id = request('cater_id');
-    $vote = cater_voting::select('vote')->where('cater_id', $cater_id)->where('company_id', $company_id)->first();
+    $vote = cater_voting::select('vote')->where('cater_id', $cater_id)->where('companyId', $company_id)->first();
     $vote = $vote +1;
-    cater_voting::where('cater_id', $cater_id)->where('company_id', $company_id)->update(['vote'=>$vote]);
+    cater_voting::where('cater_id', $cater_id)->where('companyId', $company_id)->update(['vote'=>$vote]);
     return "good";
 
 });
