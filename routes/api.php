@@ -39,6 +39,7 @@ route::get('/cater',function(){
 //to vote for cater
 route::put('/vote',function(){
     $user = auth()->user();
+    dd($user);
     $company_id = User::select('companyId')->where('id', $user)->get();
     $cater_id = request('cater_id');
     $vote = cater_voting::select('vote')->where('cater_id', $cater_id)->where('companyId', $company_id)->first();
@@ -69,7 +70,7 @@ route::post('/user', function(Request $request){
     $user->name	= request('name');
     $user->email = request('email');
     $user->password	= request('password');
-    $user->company_id = request('comp_id');
+    $user->companyId = request('comp_id');
 
     $user->save();
     return "good";
