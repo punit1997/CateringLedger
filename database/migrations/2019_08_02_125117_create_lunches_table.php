@@ -20,9 +20,9 @@ class CreateLunchesTable extends Migration
             $table->integer('voting');
             $table->float('rating');
             $table->integer('count');
-            $table->biginteger('caterId')->unsigned;
+            $table->biginteger('caterId')->unsigned();
             $table->foreign('caterId')->references('id')->on('caters');
-            $table->biginteger('companyId')->unsigned;
+            $table->biginteger('companyId')->unsigned();
             $table->foreign('companyId')->references('id')->on('companies');
         });
     }
