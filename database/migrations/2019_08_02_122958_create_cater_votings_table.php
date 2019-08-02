@@ -15,8 +15,8 @@ class CreateCaterVotingsTable extends Migration
     {
         Schema::create('cater_votings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('cater_id');
-            $table->bigInteger('company_id');
+            $table->bigInteger('caterId');
+            $table->bigInteger('companyId');
             $table->bigInteger('vote');
             $table->timestamps();
         });

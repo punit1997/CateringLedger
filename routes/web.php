@@ -26,7 +26,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 route::get('/vote',function(){
     $user = auth()->user();
-    dd($user->id);
     $company_id = User::select('companyId')->where('id', $user)->get();
     $cater_id = request('cater_id');
     $vote = cater_voting::select('vote')->where('cater_id', $cater_id)->where('companyId', $company_id)->first();
