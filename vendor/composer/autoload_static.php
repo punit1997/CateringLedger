@@ -380,8 +380,13 @@ class ComposerStaticInit1cdd58b4cdc34b5e95b07ef35ad8bef2
     );
 
     public static $classMap = array (
+<<<<<<< HEAD
+        'App\\Breakfast' => __DIR__ . '/../..' . '/app/Breakfast.php',
+=======
         'App\\Company' => __DIR__ . '/../..' . '/app/Company.php',
+>>>>>>> d3f327cc31da23312a5c99061f35023b07df90ab
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Dinner' => __DIR__ . '/../..' . '/app/Dinner.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -399,6 +404,7 @@ class ComposerStaticInit1cdd58b4cdc34b5e95b07ef35ad8bef2
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Lunch' => __DIR__ . '/../..' . '/app/Lunch.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::patch('lunch/vote', 'LunchController@vote');
+Route::patch('dinner/vote', 'DinnerController@vote');
+Route::patch('breakfast/vote', 'BreakfastController@vote');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
