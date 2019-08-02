@@ -9,9 +9,9 @@ $factory->define(Breakfast::class, function (Faker $faker) {
     static $num=1;
     return [
         'description'=>$faker->sentence(),
-        'voting' =>$faker->numberBetween(1, 20),
-        'rating' =>$faker->numberBetween(1,10),
-        'count' =>$faker->numberBetween(1,1000),
+        'voting' =>$num,
+        'rating' =>$num,
+        'count' =>$num,
         'caterId'=>$num,
         'companyId'=>$num++,
     ];
