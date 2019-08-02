@@ -41,7 +41,7 @@ route::get('/vote',function() {
     $vote = $vote + 1;
     cater_voting::where('cater_id', $cater_id)->where('companyId', $company_id)->update(['vote' => $vote]);
     return "good";
-}
+});
 
 // to show cater
 route::get('/cater',function(){

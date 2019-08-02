@@ -39,7 +39,7 @@
                 <div class="card-body">
                     <div>
                         <h3>BreakFast</h3>
-                        <form action="/vote" method="post">
+                        <form action="/menuvote" method="post">
                             @csrf
                             @method('PATCH')
                         <ol>
