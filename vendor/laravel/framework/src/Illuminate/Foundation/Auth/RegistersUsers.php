@@ -17,7 +17,8 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        $companies = \App\Company::all();
+        return view('auth.register',compact('companies'));
     }
 
     /**
