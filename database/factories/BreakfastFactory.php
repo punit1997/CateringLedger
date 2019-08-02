@@ -14,5 +14,6 @@ $factory->define(Breakfast::class, function (Faker $faker) {
         'count' =>$num,
         'caterId'=>$num,
         'companyId'=>$num++,
+
     ];
 });
