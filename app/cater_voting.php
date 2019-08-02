@@ -11,8 +11,8 @@ class cater_voting extends Model
         'caterId', 'companyId', 'vote',
     ];
 
-    public function cater()
-    {
-        return $this->belongsTo('App\caters','caterId','id');
-    }
+//    public function cater()
+//    {
+//        return $this->belongsTo('App\caters','caterId','id');
+//    }
 }
