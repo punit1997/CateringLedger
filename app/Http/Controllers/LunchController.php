@@ -14,8 +14,8 @@ class LunchController extends Controller
         $cater = $company->cater;
 
         DB::table('lunches')->where([
-        ['company_id', '=', $company->id],
-        ['cater_id', '=', $cater->id],
+        ['companyId', '=', $company->id],
+        ['caterId', '=', $cater->id],
          ])->increment('voting');
 
   }

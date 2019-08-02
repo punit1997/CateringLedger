@@ -8,11 +8,11 @@ class cater_voting extends Model
 {
     //
     protected $fillable = [
-        'cater_id', 'company_id', 'vote',
+        'caterId', 'companyId', 'vote',
     ];
 
     public function cater()
     {
-        return $this->belongsTo('App\caters','cater_id','id');
+        return $this->belongsTo('App\caters','caterId','id');
     }
 }

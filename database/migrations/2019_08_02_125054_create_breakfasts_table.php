@@ -17,13 +17,13 @@ class CreateBreakfastsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('description');
-            $table->integer'(voting');
+            $table->integer('voting');
             $table->float('rating');
             $table->integer('count');
-            $table->biginteger('cater_id')->unsigned;
-            $table->foreign('cater_id')->references('id')->on('caters');
-            $table->biginteger('company_id')->unsigned;
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->biginteger('caterId')->unsigned;
+            $table->foreign('caterId')->references('id')->on('caters');
+            $table->biginteger('companyId')->unsigned;
+            $table->foreign('companyId')->references('id')->on('companies');
         });
     }
 
