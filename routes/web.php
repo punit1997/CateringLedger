@@ -33,14 +33,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::patch('/menuvote','HomeController@vote')->middleware('auth', 'throttle:1,1');
 
 
-route::get('/vote',function(){
+route::get('/vote',function() {
     $user = auth()->user();
     $company_id = User::select('companyId')->where('id', $user)->get();
     $cater_id = request('cater_id');
     $vote = cater_voting::select('vote')->where('cater_id', $cater_id)->where('companyId', $company_id)->first();
-    $vote = $vote +1;
-    cater_voting::where('cater_id', $cater_id)->where('companyId', $company_id)->update(['vote'=>$vote]);
+    $vote = $vote + 1;
+    cater_voting::where('cater_id', $cater_id)->where('companyId', $company_id)->update(['vote' => $vote]);
     return "good";
+}
 
 // to show cater
 route::get('/cater',function(){
