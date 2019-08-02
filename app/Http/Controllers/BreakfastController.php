@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BreakfastController extends Controller
 {
-   public function vote()
-  {
-        $user = auth()->user();
-        $company = $user->company;
-        $cater = $company->cater;
-
-        DB::table('breakfasts')->where([
-        ['companyId', '=', $company->id],
-        ['caterId', '=', $cater->id],
-         ])->increment('voting');
-
-  }
+   //
 }

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Breakfast;
+use App\cater;
 use App\Company;
+use App\Dinner;
+use App\Lunch;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,6 +29,39 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user=auth()->user();
+        $companyId = $user->companyId;
+        $company_list = Company::where(['id'=>$companyId])->get();
+        $company=$company_list[0];
+
+        $today_breakfast=Breakfast::where(['id'=>$company->breakfastId])->get();
+        $today_lunch = Lunch::where(['id'=>$company->lunchId])->get();
+        $today_dinner = Dinner::where(['id'=>$company->dinnerId])->get();
+
+        $breakfast_menu= Breakfast::where(['caterId'=>$company->caterId,'companyId'=>$company->id])->get();
+        $lunch_menu= Lunch::where(['caterId'=>$company->caterId,'companyId'=>$company->id])->get();
+        $dinner_menu= Dinner::where(['caterId'=>$company->caterId,'companyId'=>$company->id])->get();
+
+        return view('home',compact(['today_breakfast','today_lunch','today_dinner','lunch_menu','breakfast_menu','dinner_menu']));
+    }
+
+    public function vote()
+    {
+        $bid = request()->Bid;
+        DB::table('breakfasts')->where([
+            'id' =>$bid
+        ])->increment('voting');
+
+        $did = request()->Did;
+        DB::table('dinners')->where([
+            'id' =>$did
+        ])->increment('voting');
+
+        $lid = request()->Lid;
+        DB::table('Lunches')->where([
+            'id' =>$lid
+        ])->increment('voting');
+
+        return redirect('/home');
     }
 }

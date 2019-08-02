@@ -28,6 +28,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+    Route::patch('/vote','HomeController@vote')->middleware('auth', 'throttle:1,1');
+
+
 route::get('/vote',function(){
     $user = auth()->user();
     $company_id = User::select('companyId')->where('id', $user)->get();
