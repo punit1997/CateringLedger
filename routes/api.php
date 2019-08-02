@@ -80,8 +80,8 @@ route::post('/user', function(Request $request){
 route::post('/vote', function(Request $request){
 
     $catervote = new cater_voting();
-    $catervote->cater_id = request('cater_id');
-    $catervote->company_id = request('comp_id');
+    $catervote->caterId = request('cater_id');
+    $catervote->companyId = request('comp_id');
     $catervote->vote = request('vote');
 
     $catervote->save();

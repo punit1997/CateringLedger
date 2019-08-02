@@ -412,7 +412,7 @@ class ComposerStaticInit1cdd58b4cdc34b5e95b07ef35ad8bef2
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\cater' => __DIR__ . '/../..' . '/app/Cater.php',
-        'App\\cater_voting' => __DIR__ . '/../..' . '/app/cater_voting.php',
+        'App\\cater_voting' => __DIR__ . '/../..' . '/app/Cater_voting.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',

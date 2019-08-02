@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  <?php
+=======
+<?php
+>>>>>>> dbf8412dd55a5dade8d3f3b02bb08b492b35a9fe
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
