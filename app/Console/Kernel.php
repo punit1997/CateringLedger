@@ -53,6 +53,14 @@ class Kernel extends ConsoleKernel
             }
         })->dailyAt('23:00');
 
+           $schedule->call(function () {
+             $companies = Company::all();
+            foreach ($companies as $company) {
+             $vote = DB::table('cater_votings')->where(['companyId'=>$company->id)->max('voting');
+             $id = DB::table('catere_votings')->where(['companyId'=>$company->id, 'voting'=>$vote])->first()->caterId;
+             $company->update(['caterId'=>$id]);
+            }
+          })->weeklyOn(6, '8:00');
 
 
           $schedule->call(function () {
@@ -67,6 +75,9 @@ class Kernel extends ConsoleKernel
           DB::table('dinners')->update(array('voting' => 0));
         })->dailyAt('23:30');
 
+          $schedule->call(function () {
+          DB::table('cater_votings')->update(array('voting' => 0));
+        })->weeklyOn(6, '8:30');
 
     }
 
