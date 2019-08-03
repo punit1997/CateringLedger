@@ -18,6 +18,7 @@
                             <h3>BreakFast</h3>
                             @foreach($today_breakfast as $breakfast)
                             {{$breakfast->description}}
+                                @if($checks->breakfastRateId==0)
                                 <div class="txt-center">
                                     <form action="/breakfast/rate" method="Post">
                                         @csrf
@@ -37,10 +38,14 @@
                                         </div>
                                     </form>
                                 </div>
+                                @else
+                                    <div>Review given</div>
+                                @endif
                             @endforeach
                             <h3>Lunch</h3>
                             @foreach($today_lunch as $lunch)
                             {{$lunch->description}}
+                                @if($checks->lunchRateId==0)
                                 <div class="txt-center">
                                     <form action="/lunch/rate" method="Post">
                                         @csrf
@@ -60,10 +65,14 @@
                                         </div>
                                     </form>
                                 </div>
+                                @else
+                                    <div>Review given</div>
+                                @endif
                             @endforeach
                             <h3>Dinner</h3>
                             @foreach($today_dinner as $dinner)
                             {{$dinner->description}}
+                                @if($checks->dinnerRateId==0)
                                 <div class="txt-center">
                                     <form action="/dinner/rate" method="Post">
                                         @csrf
@@ -83,6 +92,9 @@
                                         </div>
                                     </form>
                                 </div>
+                                @else
+                                    <div>Review given</div>
+                                @endif
                                 @endforeach
                         </div>
                 </div>
@@ -96,6 +108,7 @@
                 <div class="card-body">
                     <div>
                         <h3>BreakFast</h3>
+
                         <form action="/menuvote" method="post">
                             @csrf
                             @method('PATCH')
@@ -143,7 +156,11 @@
                                 </li>
                             <br>
                         @endforeach
+                            @if($checks->voteMenuId==0)
                             <input type="submit">
+                                @else
+                            <div>Already Given</div>
+                                @endif
                         </ol>
                         </form>
                     </div>

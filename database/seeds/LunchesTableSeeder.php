@@ -11,6 +11,6 @@ class LunchesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Lunch::class,10)->create();
+        factory(\App\Lunch::class,5)->create();
     }
 }

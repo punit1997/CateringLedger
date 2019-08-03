@@ -14,8 +14,12 @@
                             <form method = 'Post' action = '/caterer/vote'>
                                 @csrf
                                 @method('PATCH')
-                                {{$caters->name}}
+                                <a href="/caterer/show/{{$caters->id}}">{{$caters->name}}</a>
+                                @if($checks->caterId==0)
                                 <button type="submit" name="Cid" value="{{$caters->id}}" >Vote</button>
+                                @else
+                                    <div>Already Given</div>
+                                @endif
                                 {{$caters->vote}}
                             </form>
                                 Rating: {{$caters->rating}}

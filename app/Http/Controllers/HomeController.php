@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Breakfast;
 use App\cater;
+use App\Check;
 use App\Company;
 use App\Dinner;
 use App\Lunch;
@@ -34,6 +35,13 @@ class HomeController extends Controller
         $company_list = Company::where(['id'=>$companyId])->get();
         $company=$company_list[0];
 
+        $check=Check::where(['userId'=>$user->id])->get();
+        if($check->isEmpty()){
+            $ch = new Check();
+            $ch->userId=$user->id;
+            $ch->save();
+        }
+        $checks=Check::where(['userId'=>$user->id])->first();
         $today_breakfast=Breakfast::where(['id'=>$company->breakfastId])->get();
         $today_lunch = Lunch::where(['id'=>$company->lunchId])->get();
         $today_dinner = Dinner::where(['id'=>$company->dinnerId])->get();
@@ -42,7 +50,7 @@ class HomeController extends Controller
         $lunch_menu= Lunch::where(['caterId'=>$company->caterId,'companyId'=>$company->id])->get();
         $dinner_menu= Dinner::where(['caterId'=>$company->caterId,'companyId'=>$company->id])->get();
 
-        return view('home',compact(['today_breakfast','today_lunch','today_dinner','lunch_menu','breakfast_menu','dinner_menu']));
+        return view('home',compact(['today_breakfast','today_lunch','today_dinner','lunch_menu','breakfast_menu','dinner_menu','checks']));
     }
 
     public function vote()
@@ -61,7 +69,10 @@ class HomeController extends Controller
         DB::table('Lunches')->where([
             'id' =>$lid
         ])->increment('voting');
-
+        $user=auth()->user();
+        $check = Check::where(['userId'=>$user->id])->first();
+        $check->voteMenuId=1;
+        $check->save();
         return redirect('/home');
     }
 }

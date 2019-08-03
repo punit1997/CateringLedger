@@ -39,6 +39,8 @@ Route::patch('/menuvote','HomeController@vote')->middleware('auth', 'throttle:1,
 Route::get('/caterer','cater_votingController@index');
 Route::patch('/caterer/vote','cater_votingController@increase');
 
+Route::get('/caterer/show/{show}','CaterController@show');
+
 route::get('/vote',function() {
     $user = auth()->user();
     $company_id = User::select('companyId')->where('id', $user)->get();

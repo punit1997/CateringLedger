@@ -11,6 +11,6 @@ class CatersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\cater::class,10)->create();
+        factory(\App\cater::class,5)->create();
     }
 }

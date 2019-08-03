@@ -11,6 +11,6 @@ class BreakfastsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Breakfast::class,10)->create();
+        factory(\App\Breakfast::class,5)->create();
     }
 }

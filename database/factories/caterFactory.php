@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(cater::class, function (Faker $faker) {
     return [
         'name'=>$faker->name,
-        'rating'=>$faker->numberBetween(1,10),
-        'count'=>$faker->numberBetween(1,1000),
+        'rating'=>$faker->numberBetween(1,5),
+        'count'=>$faker->numberBetween(1,20),
     ];
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Breakfast;
+use App\Check;
 use App\Company;
 use App\Dinner;
 use App\Lunch;
@@ -14,11 +15,18 @@ class CompanyController extends Controller
 
      public function lunchrate(){
 //         dd("lunch");
+
+
          $rate=request()->lunch;
         $user=auth()->user();
         $companyId = $user->companyId;
         $company_list = Company::where(['id'=>$companyId])->get();
         $company=$company_list[0];
+
+         $check = Check::where(['userId'=>$user->id])->first();
+         $check->lunchRateId=1;
+         $check->save();
+
 
         $today_lunch = Lunch::where(['id'=>$company->lunchId])->first();
         $old_rating = $today_lunch->rating;
@@ -38,7 +46,12 @@ class CompanyController extends Controller
         $company_list = Company::where(['id'=>$companyId])->get();
         $company=$company_list[0];
 
-        $today_breakfast = Breakfast::where(['id'=>$company->breakfastId])->first();
+         $check = Check::where(['userId'=>$user->id])->first();
+         $check->breakfastRateId=1;
+         $check->save();
+
+
+         $today_breakfast = Breakfast::where(['id'=>$company->breakfastId])->first();
         $old_rating = $today_breakfast->rating;
         $count = $today_breakfast->count;
         $count = $count + 1;
@@ -56,6 +69,10 @@ class CompanyController extends Controller
         $companyId = $user->companyId;
         $company_list = Company::where(['id'=>$companyId])->get();
         $company=$company_list[0];
+
+          $check = Check::where(['userId'=>$user->id])->first();
+          $check->dinnerRateId=1;
+          $check->save();
 
         $today_dinner = Dinner::where(['id'=>$company->lunchId])->first();
         $old_rating = $today_dinner->rating;
