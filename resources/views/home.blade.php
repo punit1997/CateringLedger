@@ -48,6 +48,7 @@
                                     <input type="radio" name="Bid" value="{{$breakfast->id}}">
                                     {{$breakfast->description}}
                                     {{$breakfast->voting}}
+                                    <div>Rating:{{$breakfast->rating}}</div>
                                 </li>
                             <br>
                         @endforeach
@@ -64,6 +65,7 @@
                                     <input type="radio" name="Lid" value="{{$lunch->id}}">
                                     {{$lunch->description}}
                                     {{$lunch->voting}}
+                                    <div>Rating:{{$lunch->rating}}</div>
                                 </li>
                             <br>
                         @endforeach
@@ -80,6 +82,7 @@
                                     <input type="radio" name="Did" value="{{$dinner->id}}">
                                     {{$dinner->description}}
                                     {{$dinner->voting}}
+                                    <div>Rating:{{$dinner->rating}}</div>
                                 </li>
                             <br>
                         @endforeach

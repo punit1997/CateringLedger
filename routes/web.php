@@ -32,6 +32,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::patch('/menuvote','HomeController@vote')->middleware('auth', 'throttle:1,1');
 
+Route::get('/caterer','cater_votingController@index');
+Route::patch('/caterer/vote','cater_votingController@increase');
 
 route::get('/vote',function() {
     $user = auth()->user();
@@ -43,12 +45,6 @@ route::get('/vote',function() {
     return "good";
 });
 
-// to show cater
-route::get('/cater',function(){
-
-    $cater = cater::select('id','name','rating')->get();
-    return view('voteCater', compact('cater'));
-});
 
 //to vote for cater
 route::get('/vote/{id}',function($id){

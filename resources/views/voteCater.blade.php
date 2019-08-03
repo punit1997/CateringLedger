@@ -1,23 +1,31 @@
-<!DOCTYPE html>
-<head>
-    <title>
-        Choose Cater
-    </title>
-</head>
-<body>
+@extends('layouts.app')
 
-<b>Choose Cater</b>
-    <br>
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Caterer List</div>
 
-    @foreach($cater as $caters)
-        {{$caters->name}}
-        {{$caters->rating}}
-        <form method = 'PUT' action = '/vote/{{$caters->id}}' >
-            {{ csrf_field() }}
-            <button type="submit" name="submit" >Vote</button>
-        </form>
-        @endforeach
+                    <div class="card-body">
+                        <ol>
+                        @foreach($caterers as $caters)
+                            <li>
+                            <form method = 'Post' action = '/caterer/vote'>
+                                @csrf
+                                @method('PATCH')
+                                {{$caters->name}}
+                                <button type="submit" name="Cid" value="{{$caters->id}}" >Vote</button>
+                                {{$caters->vote}}
+                            </form>
+                                Rating: {{$caters->rating}}
+                            </li>
+                        @endforeach
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
 
-</body>
-
-</html>
