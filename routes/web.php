@@ -24,6 +24,10 @@ Route::patch('lunch/vote', 'LunchController@vote');
 Route::patch('dinner/vote', 'DinnerController@vote');
 Route::patch('breakfast/vote', 'BreakfastController@vote');
 
+Route::patch('breakfast/rate/{rate}', 'CompanyController@breakfastrate');
+Route::patch('lunch/rate/{rate}', 'CompanyController@lunchrate');
+Route::patch('dinner/rate/{rate}', 'CompanyController@dinnerrate');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
